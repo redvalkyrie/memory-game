@@ -1,7 +1,14 @@
 /*
  * Create a list that holds all of your cards
  */
+ /* scores the deck of cards */
+ const cardDeck = document.querySelector(".deck");
 
+ /* nodelist of all cards */
+ let cardStack = document.querySelectorAll(".card");
+
+ /* creates array initialized to cardStack */
+ let cardArray = [...cardStack];
 
 /*
  * Display the cards on the page
@@ -24,8 +31,23 @@ function shuffle(array) {
 
     return array;
 }
+/**
+* @description: calls the shuffle function and displays all cards face down
+*/
+function displayCards() {
+  cardArray = shuffle(cardArray);
+  let tempHolder= [];
+  for (let i=0; i < cardArray.length; i++) {
+    cardDeck.innerHTML ="";
+   tempHolder.forEach.call(cardArray, function(item){
+     cardDeck.appendChild(item);
+   });
+   cardArray[i].classList.remove("show", "open", "match");
+  }
+}
 
-
+/* shuffles and displays cards face down upon game load */
+document.body.onload = displayCards;
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
