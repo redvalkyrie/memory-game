@@ -69,6 +69,10 @@ function displayCards() {
    minute=0;
    second =0;
    timer.innerHTML = hour + "hours " + minute + "mins " + second + "secs";
+   endTime.innerHTML = "";
+   endMoves.innerHTML = "";
+   endStar.innerHTML = "";
+
    gameTime();
  }
  /**
@@ -124,12 +128,16 @@ let openCard = function(){
 /* @description: sets delay when cards don't match and flips over
 */
 function notMatch(){
+  console.log(openCards);
+  for (let i=0; i < 2; i++){
+    openCards[i].classList.add("notMatch");
+  }
   setTimeout(function(){
     for (let i=0; i < openCards.length; i++){
-      openCards[i].classList.remove("show", "open");
+      openCards[i].classList.remove("show", "open", "notMatch");
     }
     openCards = [];
-  }, 1200);
+  }, 3000);
 }
 /**
 * @description: Adds 1 each time 2 cards are clicked and updates the moves
@@ -181,7 +189,6 @@ let endMoves = document.querySelector(".totalMoves");
 let starList = document.querySelector(".stars");
 
 
-//TODO fix function and replay button for timer to continue working
 //TODO change 1 to 8
 function finished() {
   if (matchList === 1){

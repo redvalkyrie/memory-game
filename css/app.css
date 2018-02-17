@@ -63,24 +63,94 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transform-style: prevserve-3d;
+    transition: all 1s;
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+    transform: rotateY(180deg);
     background: #02b3e4;
     cursor: default;
+    animation-timing-function: ease-in;
 }
 
 .deck .card.show {
     font-size: 33px;
+
 }
 
 .deck .card.match {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
+    animation-timing-function: ease-in;
+    animation: bounce 1s;
+    -webkit-animation: bounce 2s;
+}
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
 }
 
+.deck .card.notMatch{
+  animation-delay: 3s;
+  -webkit-keyframes: shake 0.5s ease-in-out;
+  animation: shake 0.5s ease-in-out;
+
+}
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+  20% {
+    -webkit-transform: translateY(-10px);
+  }
+  40% {
+    -webkit-transform: translateY(10px);
+  }
+  60% {
+    -webkit-transform: translateY(-10px);
+  }
+  80% {
+    -webkit-transform: translateY(10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-10px);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+  80% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 /*
  * Styles for the Score Panel
  */
