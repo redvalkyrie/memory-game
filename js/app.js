@@ -65,6 +65,10 @@ function displayCards() {
    }
    /*starts/restarts timer */
    clearInterval(timePassed);
+   hour =0;
+   minute=0;
+   second =0;
+   timer.innerHTML = hour + "hours " + minute + "mins " + second + "secs";
    gameTime();
  }
  /**
@@ -145,11 +149,11 @@ function movesCounter(){
 */
 let timePassed;
 let timer = document.querySelector(".gameTimer");
+let second = 0;
+let minute = 0;
+let hour = 0;
 
-let gameTime = function(){
-  let second = 0;
-  let minute = 0;
-  let hour = 0;
+function gameTime(){
   timePassed = setInterval(function(){
     timer.innerHTML = hour + "hours " + minute + "mins " + second + "secs";
     second ++;
@@ -176,17 +180,20 @@ let endMoves = document.querySelector(".totalMoves");
 /* accesses stars to set up for modal*/
 let starList = document.querySelector(".stars");
 
+
 //TODO fix function and replay button for timer to continue working
+//TODO change 1 to 8
 function finished() {
   if (matchList === 1){
-    clearInterval(timePassed);
     endTime.innerHTML = timer.innerHTML;
     endMoves.innerHTML = count.innerHTML;
     endStar.innerHTML = starList.innerHTML;
   }
 }
+
 let replayButton = document.querySelector(".replay");
-replayButton.addEventListener("click", displayCards);
+replayButton.onclick = displayCards;
+
 /**
 * @description: loops through the cards and adds event listeners
 */
