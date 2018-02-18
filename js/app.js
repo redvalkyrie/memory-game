@@ -56,7 +56,7 @@ function displayCards() {
     tempHolder.forEach.call(cardArray, function(item){
       cardDeck.appendChild(item);
     });
-    cardArray[i].classList.remove("show", "open", "match", "unmatched");
+    cardArray[i].classList.remove("show", "open", "match", "unmatched", "disabled");
    }
    moves =0;
    matchList =0;
@@ -66,6 +66,7 @@ function displayCards() {
    }
    /*starts/restarts timer */
    clearInterval(timePassed);
+   /* resets all variables and innerHTML */
    hour =0;
    minute=0;
    second =0;
@@ -74,7 +75,8 @@ function displayCards() {
    endMoves.innerHTML = "";
    endStar.innerHTML = "";
    openCards = [];
-
+   isAnimating = false;
+   modalSelector.classList.remove('show');
    gameTime();
  }
  /**
@@ -106,8 +108,10 @@ let openCards = [];
 * openCards and verify if statements
 */
 let openCard = function(){
+  if(isAnimating) return;
   this.classList.toggle("open");
   this.classList.toggle("show");
+  this.classList.toggle("disabled");
   openCards.push(this);
   let cardCount = openCards.length;
   if (cardCount === 2) {
@@ -129,17 +133,20 @@ let openCard = function(){
 /**
 /* @description: sets delay when cards don't match and flips over
 */
+let isAnimating = true;
+
 function notMatch(){
-  console.log(openCards);
+  isAnimating =true;
   for (let i=0; i < 2; i++){
     openCards[i].classList.add("unmatched");
   }
   setTimeout(function(){
+    isAnimating = false;
     for (let i=0; i < openCards.length; i++){
-      openCards[i].classList.remove("show", "open", "unmatched");
+      openCards[i].classList.remove("show", "open", "unmatched", "disabled");
     }
     openCards = [];
-  }, 800);
+  }, 900);
 }
 /**
 * @description: Adds 1 each time 2 cards are clicked and updates the moves
@@ -190,6 +197,7 @@ let endMoves = document.querySelector(".totalMoves");
 /* accesses stars to set up for modal*/
 let starList = document.querySelector(".stars");
 
+let modalSelector = document.querySelector(".modal");
 
 //TODO change 1 to 8
 function finished() {
@@ -198,6 +206,7 @@ function finished() {
     endTime.innerHTML = timer.innerHTML;
     endMoves.innerHTML = count.innerHTML;
     endStar.innerHTML = starList.innerHTML;
+    modalSelector.classList.add('show');
   }
 }
 
