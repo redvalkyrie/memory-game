@@ -56,9 +56,10 @@ function displayCards() {
     tempHolder.forEach.call(cardArray, function(item){
       cardDeck.appendChild(item);
     });
-    cardArray[i].classList.remove("show", "open", "match");
+    cardArray[i].classList.remove("show", "open", "match", "unmatched");
    }
    moves =0;
+   matchList =0;
    count.innerHTML = 0;
    for (let i=0; i < starCount.length; i++){
      starCount[i].style.visibility = "visible";
@@ -72,6 +73,7 @@ function displayCards() {
    endTime.innerHTML = "";
    endMoves.innerHTML = "";
    endStar.innerHTML = "";
+   openCards = [];
 
    gameTime();
  }
@@ -137,7 +139,7 @@ function notMatch(){
       openCards[i].classList.remove("show", "open", "unmatched");
     }
     openCards = [];
-  }, 3000);
+  }, 800);
 }
 /**
 * @description: Adds 1 each time 2 cards are clicked and updates the moves
@@ -192,6 +194,7 @@ let starList = document.querySelector(".stars");
 //TODO change 1 to 8
 function finished() {
   if (matchList === 1){
+    clearInterval(timePassed);
     endTime.innerHTML = timer.innerHTML;
     endMoves.innerHTML = count.innerHTML;
     endStar.innerHTML = starList.innerHTML;
