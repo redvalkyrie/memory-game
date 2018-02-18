@@ -130,11 +130,11 @@ let openCard = function(){
 function notMatch(){
   console.log(openCards);
   for (let i=0; i < 2; i++){
-    openCards[i].classList.add("notMatch");
+    openCards[i].classList.add("unmatched");
   }
   setTimeout(function(){
     for (let i=0; i < openCards.length; i++){
-      openCards[i].classList.remove("show", "open", "notMatch");
+      openCards[i].classList.remove("show", "open", "unmatched");
     }
     openCards = [];
   }, 3000);
