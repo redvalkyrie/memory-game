@@ -49,12 +49,12 @@ function shuffle(array) {
  * @description: calls the shuffle function and displays all cards face down
  */
 function displayCards() {
-   cardArray = shuffle(cardArray);
-   let tempHolder= [];
-   for (let i=0; i < cardArray.length; i++) {
-     cardDeck.innerHTML ='';
-    tempHolder.forEach.call(cardArray, function(item){
-      cardDeck.appendChild(item);
+    cardArray = shuffle(cardArray);
+    let tempHolder= [];
+    for (let i=0; i < cardArray.length; i++) {
+        cardDeck.innerHTML ='';
+        tempHolder.forEach.call(cardArray, function(item){
+        cardDeck.appendChild(item);
     });
     cardArray[i].classList.remove('show', 'open', 'match', 'unmatched', 'disabled');
    }
@@ -62,8 +62,8 @@ function displayCards() {
    matchList =0;
    count.innerHTML = 0;
    for (let i=0; i < starCount.length; i++){
-     starCount[i].style.visibility = 'visible';
-   }
+       starCount[i].style.visibility = 'visible';
+    }
    /*starts/restarts timer */
    clearInterval(timePassed);
    /* resets all variables and innerHTML */
@@ -99,72 +99,72 @@ let openCards = [];
 * openCards and verify if statements
 */
 let openCard = function(){
-  if(isAnimating) return;
-  this.classList.toggle('open');
-  this.classList.toggle('show');
-  this.classList.toggle('disabled');
-  openCards.push(this);
-  let cardCount = openCards.length;
-  if (cardCount === 2) {
-    movesCounter();
-    if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className){
-      matchList++;
-      for (let i=0; i < 2; i++){
-        openCards[i].classList.add('match');
-        openCards[i].classList.remove('show', 'open');
-      }
-      openCards = [];
-    } else {
-        notMatch();
+    if(isAnimating) return;
+    this.classList.toggle('open');
+    this.classList.toggle('show');
+    this.classList.toggle('disabled');
+    openCards.push(this);
+    let cardCount = openCards.length;
+    if (cardCount === 2) {
+        movesCounter();
+        if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className){
+            matchList++;
+                for (let i=0; i < 2; i++){
+                    openCards[i].classList.add('match');
+                    openCards[i].classList.remove('show', 'open');
+                }
+            openCards = [];
+        } else {
+            notMatch();
+        }
     }
-  }
-  finished();
+    finished();
 }
 /**
 /* @description: sets delay when cards don't match and flips over
 */
 function notMatch(){
-  isAnimating =true;
-  for (let i=0; i < 2; i++){
+    isAnimating =true;
+    for (let i=0; i < 2; i++){
     openCards[i].classList.add('unmatched');
-  }
-  setTimeout(function(){
-    isAnimating = false;
-    for (let i=0; i < openCards.length; i++){
-      openCards[i].classList.remove('show', 'open', 'unmatched', 'disabled');
     }
-    openCards = [];
-}, 2000);
+    setTimeout(function(){
+        isAnimating = false;
+        for (let i=0; i < openCards.length; i++){
+            openCards[i].classList.remove('show', 'open', 'unmatched', 'disabled');
+        }
+        openCards = [];
+    }, 2000);
 }
 /**
 * @description: Adds 1 each time 2 cards are clicked and updates the moves
 * in index.html. Tracks moves and adjusts star rating.
 */
 function movesCounter(){
-  moves ++;
-  count.innerHTML = moves;
-  if (moves < 30 && moves > 24){
-    starCount[2].style.visibility = 'collapse';
-  } else if (moves > 30){
-      starCount[1].style.visibility = 'collapse';
-  }
+    moves ++;
+    count.innerHTML = moves;
+    if (moves < 30 && moves > 24){
+        starCount[2].style.visibility = 'collapse';
+    } else if (moves > 30){
+        starCount[1].style.visibility = 'collapse';
+    }
 }
 /**
 * @description: game timer
 */
 function gameTime(){
-  timePassed = setInterval(function(){
-    timer.innerHTML = hour + ' hours ' + minute + ' mins ' + second + ' secs';
-    second ++;
-    if (second == 60){
-      minute ++;
-      second =0;
-    }
-    if (minute == 60){
-      hour++;
-      minute = 0;
-    }
-  }, 1000);
+    timePassed = setInterval(function(){
+        timer.innerHTML = hour + ' hours ' + minute + ' mins ' + second + ' secs';
+        second ++;
+        if (second == 60){
+            minute ++;
+            second =0;
+        }
+        if (minute == 60){
+            hour++;
+            minute = 0;
+        }
+    }, 1000);
 }
 /**
 * @description: modal for when all cards are matched
@@ -186,18 +186,18 @@ replayButton.onclick = displayCards;
 
 
 function finished() {
-  if (matchList === 8){
-    clearInterval(timePassed);
-    endTime.innerHTML = timer.innerHTML;
-    endMoves.innerHTML = count.innerHTML;
-    endStar.innerHTML = starList.innerHTML;
-    modalSelector.classList.add('show');
-  }
+    if (matchList === 8){
+        clearInterval(timePassed);
+        endTime.innerHTML = timer.innerHTML;
+        endMoves.innerHTML = count.innerHTML;
+        endStar.innerHTML = starList.innerHTML;
+        modalSelector.classList.add('show');
+    }
 }
 /**
 * @description: loops through the cards and adds event listeners
 */
 for (let i=0; i <cardArray.length; i++){
-  cardStack= cardArray[i];
-  cardStack.addEventListener('click', openCard);
+    cardStack= cardArray[i];
+    cardStack.addEventListener('click', openCard);
 }
