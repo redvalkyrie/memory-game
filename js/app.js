@@ -70,7 +70,7 @@ function displayCards() {
    hour =0;
    minute=0;
    second =0;
-   timer.innerHTML = hour + 'hours ' + minute + 'mins ' + second + 'secs';
+   timer.innerHTML = hour + ' hours ' + minute + ' mins ' + second + ' secs';
    endTime.innerHTML = '';
    endMoves.innerHTML = '';
    endStar.innerHTML = '';
@@ -172,7 +172,7 @@ let hour = 0;
 
 function gameTime(){
   timePassed = setInterval(function(){
-    timer.innerHTML = hour + 'hours ' + minute + 'mins ' + second + 'secs';
+    timer.innerHTML = hour + ' hours ' + minute + ' mins ' + second + ' secs';
     second ++;
     if (second == 60){
       minute ++;
