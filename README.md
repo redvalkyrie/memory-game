@@ -5,7 +5,7 @@ Amber Fuller 02-19-2018
 * [Installation](#Installation)
 * [Contributing](#Contributing)
 
-##Synopsis
+## Synopsis
 This game was designed to be a web-based game.  Users select cards to find
 matching pairs.  Upon finding all matching pairs, the modal will display a
 Congratulations screen with the number of moves, time, and star rating. Users
@@ -18,7 +18,7 @@ that all cards are randomized each game. If the user wishes to restart the game
 without completing it, click the replay button located on the upper right side
 above the deck.
 
-##Installation
+## Installation
 For offline gameplay, all files must be cloned or downloaded from
 https://github.com/redvalkyrie/memory-game
 Check for the following:
