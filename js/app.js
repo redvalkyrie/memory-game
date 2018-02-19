@@ -57,33 +57,33 @@ function displayCards() {
         cardDeck.appendChild(item);
     });
     cardArray[i].classList.remove('show', 'open', 'match', 'unmatched', 'disabled');
-   }
-   moves =0;
-   matchList =0;
-   count.innerHTML = 0;
-   for (let i=0; i < starCount.length; i++){
+    }
+    moves =0;
+    matchList =0;
+    count.innerHTML = 0;
+    for (let i=0; i < starCount.length; i++){
        starCount[i].style.visibility = 'visible';
     }
-   /*starts/restarts timer */
-   clearInterval(timePassed);
-   /* resets all variables and innerHTML */
-   hour =0;
-   minute=0;
-   second =0;
-   timer.innerHTML = hour + ' hours ' + minute + ' mins ' + second + ' secs';
-   endTime.innerHTML = '';
-   endMoves.innerHTML = '';
-   endStar.innerHTML = '';
-   openCards = [];
-   isAnimating = false;
-   modalSelector.classList.remove('show');
-   gameTime();
+    /*starts/restarts timer */
+    clearInterval(timePassed);
+    /* resets all variables and innerHTML */
+    hour =0;
+    minute=0;
+    second =0;
+    timer.innerHTML = hour + ' hours ' + minute + ' mins ' + second + ' secs';
+    endTime.innerHTML = '';
+    endMoves.innerHTML = '';
+    endStar.innerHTML = '';
+    openCards = [];
+    isAnimating = false;
+    modalSelector.classList.remove('show');
+    gameTime();
  }
- /**
- * @description: changes .restart to a clickable event which triggers the
- * function displayCards
- */
- let replayGame= document.querySelector('.restart');
+/**
+* @description: changes .restart to a clickable event which triggers the
+* function displayCards
+*/
+let replayGame= document.querySelector('.restart');
 replayGame.onclick = displayCards;
 
 /* suffles and displays cards face down upon game load */
@@ -109,10 +109,10 @@ let openCard = function(){
         movesCounter();
         if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className){
             matchList++;
-                for (let i=0; i < 2; i++){
-                    openCards[i].classList.add('match');
-                    openCards[i].classList.remove('show', 'open');
-                }
+            for (let i=0; i < 2; i++){
+                openCards[i].classList.add('match');
+                openCards[i].classList.remove('show', 'open');
+            }
             openCards = [];
         } else {
             notMatch();
