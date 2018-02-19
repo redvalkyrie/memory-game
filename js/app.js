@@ -34,7 +34,38 @@ let timePassed;
 /* allows additional card clicks to be disabled during animations */
 let isAnimating = true;
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+/* accesses class "rating" in html */
+let endStar= document.querySelector('.rating');
+
+/*accesses the ending time for the modal display */
+let endTime = document.querySelector('.endTime');
+
+/*accesses the amount of moves for the modal display */
+let endMoves = document.querySelector('.totalMoves');
+
+/* accesses stars to set up for modal*/
+let starList = document.querySelector('.stars');
+
+/* accesses the class "modal" from html */
+let modalSelector = document.querySelector('.modal');
+
+/* targets "replay" at top right of screen and triggers displayCards on click */
+let replayButton = document.querySelector('.replay');
+replayButton.onclick = displayCards;
+
+/* shuffles and displays cards face down upon game load */
+document.body.onload = displayCards;
+/**
+* @description: changes .restart to a clickable event which triggers the
+* function displayCards
+*/
+let replayGame= document.querySelector('.restart');
+replayGame.onclick = displayCards;
+/**
+* @description: Shuffle function from http://stackoverflow.com/a/2450976
+* @param: Name: array, type: array
+* @returns: randomized array
+*/
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -83,22 +114,9 @@ function displayCards() {
     gameTime();
  }
 /**
-* @description: changes .restart to a clickable event which triggers the
-* function displayCards
-*/
-let replayGame= document.querySelector('.restart');
-replayGame.onclick = displayCards;
-
-/* suffles and displays cards face down upon game load */
-document.body.onload = displayCards;
-
-
-/**
 * @description: open and compare cards
 *opens the cards and pushes it into the array.
-* Compares cards and then changes the clicked cards according to whether
-* they match.  Currently using console.log to verify card placement into
-* openCards and verify if statements
+* Compares cards and executes code or calls function whether or not they match.
 */
 let openCard = function(){
     if(isAnimating) return;
@@ -171,22 +189,6 @@ function gameTime(){
 /**
 * @description: modal for when all cards are matched
 */
-let endStar= document.querySelector('.rating');
-
-/*accesses the ending time for the modal display */
-let endTime = document.querySelector('.endTime');
-
-/*accesses the amount of moves for the modal display */
-let endMoves = document.querySelector('.totalMoves');
-/* accesses stars to set up for modal*/
-let starList = document.querySelector('.stars');
-
-let modalSelector = document.querySelector('.modal');
-
-let replayButton = document.querySelector('.replay');
-replayButton.onclick = displayCards;
-
-
 function finished() {
     if (matchList === 8){
         clearInterval(timePassed);
