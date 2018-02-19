@@ -4,6 +4,7 @@ Amber Fuller 02-19-2018
 * [Description](#Description)
 * [Instructions for Gameplay](#Instructions for Gameplay)
 * [Contributing](#Contributing)
+* [Contact](#Contact)
 
 ##Description
 This game was designed to be a web-based game.  Users select cards to find
