@@ -2,7 +2,7 @@
 Amber Fuller 02-19-2018
 ## Table of Contents
 * [Description](#Description)
-* [Instructions for Gameplay](#Instructions for Gameplay)
+* [Instructions](#Instructions)
 * [Contributing](#Contributing)
 * [Contact](#Contact)
 
@@ -11,7 +11,7 @@ This game was designed to be a web-based game.  Users select cards to find
 matching pairs.  Upon finding all matching pairs, the modal will display a
 Congratulations screen with the number of moves, time, and star rating.
 
-##Instruction for Gameplay
+##Instruction
 For offline gameplay, all files must be downloaded
 https://github.com/redvalkyrie/memory-game
 In order to start the game offline, the user must run index.html.  The file will
