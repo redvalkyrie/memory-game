@@ -24,9 +24,9 @@ https://github.com/redvalkyrie/memory-game
 Check for the following:
 1. index.html
 2. css folder
-	-app.css
+	- app.css
 3. js folder
-	-app.js
+	- app.js
 3. img folder
 	-geometry2.png
 In order to start the game offline, the user must run index.html.  The file will
