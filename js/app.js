@@ -22,6 +22,9 @@ let matchList = 0;
 /* accesses the timer at the top of the game */
 let timer = document.querySelector('.gameTimer');
 
+/* array to hold open cards */
+let openCards = [];
+
 /* variables for timer */
 let second = 0;
 let minute = 0;
@@ -89,8 +92,7 @@ replayGame.onclick = displayCards;
 /* suffles and displays cards face down upon game load */
 document.body.onload = displayCards;
 
-/* array to hold open cards */
-let openCards = [];
+
 /**
 * @description: open and compare cards
 *opens the cards and pushes it into the array.
