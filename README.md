@@ -28,7 +28,7 @@ Check for the following:
 3. js folder
 	- app.js
 3. img folder
-	-geometry2.png
+	- geometry2.png
 In order to start the game offline, the user must run index.html.  The file will
 then open, and the game will run in a browser window.
 
