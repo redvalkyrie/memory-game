@@ -1,9 +1,3 @@
-/*
-* Display the cards on the page
-*   - shuffle the list of cards using the provided 'shuffle' method below
-*   - loop through each card and create its HTML
-*   - add each card's HTML to the page
-*/
 /* scores the deck of cards */
 const cardDeck = document.querySelector('.deck');
 
@@ -22,8 +16,20 @@ let count = document.querySelector('.moves');
 /* adds stars to array for rating */
 const starCount = document.querySelectorAll('.fa-star');
 
+/* counts number of cards matched */
 let matchList = 0;
-console.log(matchList);
+
+/* accesses the timer at the top of the game */
+let timer = document.querySelector('.gameTimer');
+
+/* variables for timer */
+let second = 0;
+let minute = 0;
+let hour = 0;
+let timePassed;
+
+/* allows additional card clicks to be disabled during animations */
+let isAnimating = true;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -39,12 +45,6 @@ function shuffle(array) {
 
     return array;
 }
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided 'shuffle' method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
  /**
  * @description: calls the shuffle function and displays all cards face down
  */
@@ -88,16 +88,7 @@ replayGame.onclick = displayCards;
 
 /* suffles and displays cards face down upon game load */
 document.body.onload = displayCards;
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of 'open' cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+
 /* array to hold open cards */
 let openCards = [];
 /**
@@ -118,7 +109,6 @@ let openCard = function(){
     movesCounter();
     if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className){
       matchList++;
-      console.log(matchList);
       for (let i=0; i < 2; i++){
         openCards[i].classList.add('match');
         openCards[i].classList.remove('show', 'open');
@@ -133,8 +123,6 @@ let openCard = function(){
 /**
 /* @description: sets delay when cards don't match and flips over
 */
-let isAnimating = true;
-
 function notMatch(){
   isAnimating =true;
   for (let i=0; i < 2; i++){
@@ -146,7 +134,7 @@ function notMatch(){
       openCards[i].classList.remove('show', 'open', 'unmatched', 'disabled');
     }
     openCards = [];
-  }, 900);
+}, 2000);
 }
 /**
 * @description: Adds 1 each time 2 cards are clicked and updates the moves
@@ -164,12 +152,6 @@ function movesCounter(){
 /**
 * @description: game timer
 */
-let timePassed;
-let timer = document.querySelector('.gameTimer');
-let second = 0;
-let minute = 0;
-let hour = 0;
-
 function gameTime(){
   timePassed = setInterval(function(){
     timer.innerHTML = hour + ' hours ' + minute + ' mins ' + second + ' secs';
@@ -199,9 +181,12 @@ let starList = document.querySelector('.stars');
 
 let modalSelector = document.querySelector('.modal');
 
-//TODO change 1 to 8
+let replayButton = document.querySelector('.replay');
+replayButton.onclick = displayCards;
+
+
 function finished() {
-  if (matchList === 1){
+  if (matchList === 8){
     clearInterval(timePassed);
     endTime.innerHTML = timer.innerHTML;
     endMoves.innerHTML = count.innerHTML;
@@ -209,18 +194,6 @@ function finished() {
     modalSelector.classList.add('show');
   }
 }
-
-let closeButton= document.querySelector('.close');
-
-function closePopup() {
-  closeButton.addEventListener('click', function(){
-    modalSelector.classList.remove('show');
-  });
-}
-
-let replayButton = document.querySelector('.replay');
-replayButton.onclick = displayCards;
-
 /**
 * @description: loops through the cards and adds event listeners
 */
