@@ -210,6 +210,14 @@ function finished() {
   }
 }
 
+let closeButton= document.querySelector('.close');
+
+function closePopup() {
+  closeButton.addEventListener('click', function(){
+    modalSelector.classList.remove('show');
+  });
+}
+
 let replayButton = document.querySelector('.replay');
 replayButton.onclick = displayCards;
 

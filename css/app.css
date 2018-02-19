@@ -170,7 +170,7 @@ h1 {
 
 }
 
-.modal.show{
+.show{
   visibility: visible !important;
   opacity: 100 !important;
 }
