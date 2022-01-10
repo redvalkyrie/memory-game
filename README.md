@@ -1,5 +1,5 @@
 # Memory Game
-Amber Fuller 02-19-2018
+02-19-2018
 ## Table of Contents
 * [Synopsis](#Synopsis)
 * [Installation](#Installation)
